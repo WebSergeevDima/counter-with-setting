@@ -1,0 +1,19 @@
+.count {
+    height: 150px;
+    background-color: #70e4fb;
+    font-size: 80px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.isMax {
+    color: red;
+}
+
+.error {
+    background: #f559a1;
+}

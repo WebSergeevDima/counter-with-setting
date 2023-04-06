@@ -1,0 +1,18 @@
+.counterWrapper {
+    background: #2c2b33;
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 6px;
+    margin: 40px auto;
+    border: 3px #70e4fb solid;
+}
+
+.counter__buttons {
+    border: 3px #6fe4fb solid;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}

@@ -1,0 +1,16 @@
+.button {
+    background: #6fe4fb;
+    color: #2d2b31;
+    border: 0;
+    border-radius: 6px;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0 20px;
+    cursor: pointer;
+    width: 160px;
+}
+
+.button[disabled] {
+    background-color: #477586;
+    cursor: context-menu;
+}
