@@ -6,9 +6,6 @@ import styled from "styled-components";
 type CounterPropsType = {
     baseStartValue: number
     baseMaxValue: number
-    startValue: number
-    maxValue: number
-    isChange: boolean
 }
 
 const Wrapper = styled.div`
@@ -30,9 +27,7 @@ const Buttons = styled.div`
   padding: 20px;
 `;
 
-const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue, startValue, maxValue, isChange}) => {
-
-    let isChangeValues = (baseStartValue !== startValue || baseMaxValue !== maxValue) || isChange ? false : true;
+const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue}) => {
 
     const [count, setCount] = useState<number>(baseStartValue);
 
@@ -44,13 +39,13 @@ const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue, star
         setCount(baseStartValue)
     }
 
-    const isActiveIncButton = baseMaxValue !== count && isChangeValues ? true : false;
-    const isActiveResetButton = baseStartValue < count && isChangeValues ? true : false;
+    const isActiveIncButton = baseMaxValue !== count ? true : false;
+    const isActiveResetButton = baseStartValue < count ? true : false;
 
     return (
         <Wrapper>
             <div>
-                <Table count={count} isActive={!isActiveIncButton} isChangeValues={isChangeValues} maxValue={maxValue} startValue={startValue}/>
+                <Table count={count} isActive={!isActiveIncButton}/>
                 <Buttons>
                     <BtnBlue title={'inc'} onClick={incCount} isActive={isActiveIncButton}/>
                     <BtnBlue title={'Reset'} onClick={resetCount} isActive={isActiveResetButton}/>

@@ -28,13 +28,21 @@ function App() {
         setIsChange(false);
     }
 
+    const isActiveMaxValue = startValue <= maxValue && maxValue >= 0 ? true : false;
+    const isActiveStartValue = startValue <= maxValue && startValue >= 0 ? true : false;
+    const isActiveIncButton = (isActiveMaxValue && isActiveStartValue) && isChange ? true : false;
 
-  return (
-    <div className="App">
-        <Counter baseStartValue={baseStartValue} baseMaxValue={baseMaxValue} maxValue={maxValue} startValue={startValue} isChange={isChange} />
-        <CounterSetting startValue={startValue} maxValue={maxValue} onChangeMaxValue={onChangeMaxValue} onChangeStartValue={onChangeStartValue} setSetting={setSetting} isChange={isChange} />
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <Counter baseMaxValue={baseMaxValue} baseStartValue={baseStartValue}/>
+            <CounterSetting startValue={startValue} maxValue={maxValue} onChangeMaxValue={onChangeMaxValue}
+                            onChangeStartValue={onChangeStartValue} setSetting={setSetting}
+                            isActiveMaxValue={isActiveMaxValue}
+                            isActiveStartValue={isActiveStartValue}
+                            isActiveIncButton={isActiveIncButton}/>
+        </div>
+    );
 }
 
 export default App;

@@ -6,10 +6,12 @@ import InputNumber from "../InputNumber/InputNumber";
 type CounterPropsType = {
     startValue: number
     maxValue: number
-    isChange: boolean
     onChangeMaxValue: (value: number) => void
     onChangeStartValue: (value: number) => void
     setSetting: () => void
+    isActiveMaxValue: boolean
+    isActiveStartValue: boolean
+    isActiveIncButton: boolean
 }
 
 const Wrapper = styled.div`
@@ -49,11 +51,17 @@ const TableRowTitle = styled.div`
   text-align: left;
 `;
 
-const CounterSetting: React.FC<CounterPropsType> = ({startValue, maxValue,  onChangeMaxValue, onChangeStartValue, setSetting, isChange}) => {
+const CounterSetting: React.FC<CounterPropsType> = ({
+                                                        startValue,
+                                                        maxValue,
+                                                        onChangeMaxValue,
+                                                        onChangeStartValue,
+                                                        setSetting,
+                                                        isActiveMaxValue,
+                                                        isActiveStartValue,
+                                                        isActiveIncButton
 
-    const isActiveMaxValue = maxValue >= 0 ? true : false;
-    const isActiveStartValue = startValue >= 0 ? true : false;
-    const isActiveIncButton = (isActiveMaxValue && isActiveStartValue) && isChange ? true : false;
+                                                    }) => {
 
     return (
         <Wrapper>
@@ -61,11 +69,13 @@ const CounterSetting: React.FC<CounterPropsType> = ({startValue, maxValue,  onCh
                 <div>
                     <TableRow>
                         <TableRowTitle>max value:</TableRowTitle>
-                        <div><InputNumber onChangeInputNumber={onChangeMaxValue} number={maxValue} isActive={isActiveMaxValue}/></div>
+                        <div><InputNumber onChangeInputNumber={onChangeMaxValue} number={maxValue}
+                                          isActive={isActiveMaxValue}/></div>
                     </TableRow>
                     <TableRow>
                         <TableRowTitle>start value:</TableRowTitle>
-                        <div><InputNumber onChangeInputNumber={onChangeStartValue} number={startValue} isActive={isActiveStartValue}/></div>
+                        <div><InputNumber onChangeInputNumber={onChangeStartValue} number={startValue}
+                                          isActive={isActiveStartValue}/></div>
                     </TableRow>
                 </div>
                 <Buttons>
