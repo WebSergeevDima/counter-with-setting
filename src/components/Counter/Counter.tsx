@@ -6,6 +6,8 @@ import styled from "styled-components";
 type CounterPropsType = {
     baseStartValue: number
     baseMaxValue: number
+    isSetError: boolean
+    isChange: boolean
 }
 
 const Wrapper = styled.div`
@@ -27,7 +29,7 @@ const Buttons = styled.div`
   padding: 20px;
 `;
 
-const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue}) => {
+const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue, isSetError, isChange}) => {
 
     const [count, setCount] = useState<number>(baseStartValue);
 
@@ -45,10 +47,10 @@ const Counter: React.FC<CounterPropsType> = ({baseStartValue, baseMaxValue}) => 
     return (
         <Wrapper>
             <div>
-                <Table count={count} isActive={!isActiveIncButton}/>
+                <Table count={count} isActive={!isActiveIncButton} isSetError={isSetError} isChange={isChange}/>
                 <Buttons>
-                    <BtnBlue title={'inc'} onClick={incCount} isActive={isActiveIncButton}/>
-                    <BtnBlue title={'Reset'} onClick={resetCount} isActive={isActiveResetButton}/>
+                    <BtnBlue title={'inc'} onClick={incCount} isActive={isActiveIncButton && !isChange}/>
+                    <BtnBlue title={'Reset'} onClick={resetCount} isActive={isActiveResetButton && !isChange}/>
                 </Buttons>
             </div>
         </Wrapper>

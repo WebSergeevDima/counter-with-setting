@@ -17,3 +17,11 @@
 .error {
     background: #f559a1;
 }
+
+.correctValue {
+    font-size: 24px;
+}
+.incorrectValue {
+    color: #f559a1;
+    font-size: 24px;
+ }
